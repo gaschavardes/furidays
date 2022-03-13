@@ -12,7 +12,7 @@
       </div>
       
        <transition name="link" duration="10000">
-          <a href="" ref="link" class="main-link" v-show="showLink">CLICK THAT LINK MOFO</a>
+          <a href="https://buy.stripe.com/7sIbKMe8a8Kw0GQ4gi" target='_blank' rel="noopener" ref="link" class="main-link" v-show="showLink">CLICK THAT LINK MOFO</a>
       </transition>
       <transition name="link" duration="10000">
         <div v-show="introEnded && !scrollBegin" class="scroll-cta">scroll that pineapple</div>
