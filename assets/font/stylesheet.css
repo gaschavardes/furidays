@@ -1,8 +1,17 @@
 @font-face {
-    font-family: 'COCOGOOSE';
-    src: url('COCOGOOSE-DemiBold.woff2') format('woff2'),
-        url('COCOGOOSE-DemiBold.woff') format('woff');
-    font-weight: 600;
+    font-family: 'title';
+    src: url('Extreme-Regular.woff2') format('woff2'),
+        url('Extreme-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sansserif';
+    src: url('AltonaSans-Regular.woff2') format('woff2'),
+        url('AltonaSans-Regular.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
