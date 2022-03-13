@@ -56,6 +56,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    filenames: {
+      chunk: ({ isDev }) => isDev ? '[name].js' : '[chunkhash].js'
+    },
     extractCSS: true,
     transpile: ['gsap', 'ogl', 'Raf'],
     extend (config, {
