@@ -2,6 +2,7 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  target: 'static',
   env: {
     STRIPE_PK: process.env.STRIPE_PK,
   },
@@ -24,7 +25,7 @@ export default {
 
   
   router: {
-    base: '/',
+    base: '/_nuxt',
     extendRoutes (routes, resolve) {
       routes.push({
         name: 'home',
