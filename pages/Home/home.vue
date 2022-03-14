@@ -98,6 +98,8 @@ export default {
       this.Raf = el.default
       this.Raf.suscribe('webgl', this.update.bind(this))
     })
+    this.isMobile = Bowser.getParser(window.navigator.userAgent).parsedResult.platform.type !== 'desktop'
+
     this.emitter = {}
     Emitter(this.emitter)
     this.on = this.emitter.on.bind(this.emitter)
@@ -106,12 +108,13 @@ export default {
     window.addEventListener('wheel', this.scrollListen.bind(this), false, false)
     import('../../assets/js/mouse').then((el) => {
       this.Mouse = el.default
-      this.Mouse.on('drag', (e) => {
-        this.scrollListen(e)
-      })
-
+      if(this.isMobile){
+        this.Mouse.on('drag', (e) => {
+            this.scrollListen(e)
+          })
+      }
+  
     })
-    this.isMobile = Bowser.getParser(window.navigator.userAgent).parsedResult.platform.type !== 'desktop'
     this.split()
     // this.appear()
   },

@@ -1,4 +1,5 @@
 @import '../../assets/font/stylesheet.css';
+@import '../../assets/less/master.less';
 @font: 'sansserif';
 .block-intro{
     position: fixed;
@@ -48,6 +49,12 @@
                 position: relative;
                 white-space: nowrap;
             }
+
+            @media @mobile {
+                font-size: 40px;
+            }
         }
+
+     
     }
 }
