@@ -25,7 +25,7 @@ export default {
 
   
   router: {
-    base: '/_nuxt',
+    base: '/',
     extendRoutes (routes, resolve) {
       routes.push({
         name: 'home',
