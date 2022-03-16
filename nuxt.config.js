@@ -8,15 +8,18 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'furidays',
+    title: 'Les Furidays',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'Le festival des Furieux' },
+      { name: 'og:url', content: 'https://furidays.bzh' },
+      { name: 'og:type', content: 'website' },
+      { name: 'og:description', content: 'Le festival des Furieux' },
+      { name: 'og:image', content: 'https://furidays.bzh/shareImg.jpg' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
