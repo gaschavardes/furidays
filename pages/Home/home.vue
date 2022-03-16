@@ -308,7 +308,7 @@ export default {
     if (e && this.isMobile ) {
         if(e.dragedVal){
           console.log(e.velocity[1])
-          this.scrollTarget += -e.velocity[1] * 1000
+          this.scrollTarget += -e.velocity[1] * 10000
         }
     } else { this.scrollTarget += e.deltaY }
     if (this.scrollTarget <= 0) {
