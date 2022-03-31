@@ -1,7 +1,8 @@
 import {
   Renderer,
   Camera,
-  Transform
+  Transform,
+  Orbit
 } from 'ogl'
 import Emitter from 'event-emitter'
 import Bowser from 'bowser'
@@ -47,9 +48,15 @@ class Scene {
     //   this.container.style.left = this.$el.getBoundingClientRect().x + this.$el.getBoundingClientRect().width * 0.5 + 'px'
     
     this.gl.clearColor(1, 0, 0, 0)
+   
     this.camera = new Camera(this.gl, {
       fov: 15
     })
+   
+    this.camera.position.set(0, 0, 0)
+    this.camera.lookAt([0, 0, 0])
+    this.controls = new Orbit(this.camera);
+    this.scene = new Transform()
     this.camera.perspective({ aspect: this.gl.canvas.width / this.gl.canvas.height });
 
     import('./Raf').then((el) => {
@@ -58,7 +65,7 @@ class Scene {
     //   this.Raf.suscribe('sceneScroll', () => { this.updateScroll() })
     })
 
-    this.camera.position.z = 10
+    // this.camera.position.z = 100
     this.scene = new Transform()
     
 
@@ -120,6 +127,8 @@ class Scene {
 
   update () {
     this.time++
+    this.controls.update()
+    console.log(this.controls)
     this.renderer.render({
       scene: this.scene,
       camera: this.camera

@@ -1,22 +1,22 @@
 <template>
   <div class="tpl-home">
-    <Intro/>
+    <!-- <Intro/> -->
     <!-- <img :src="require(`../../static/images/${datas.projects[0].image}`)" alt=""> -->
-      <div class="title-container">
+      <!-- <div class="title-container">
         <transition name="names" duration="10000">
           <h2 ref="title" v-html="title" v-show="introEnded && !scrollBegin"></h2>
-        </transition>
+        </transition> -->
         <!-- <transition name="link" duration="10000"> -->
-          <div class="dates" :class="introEnded && !scrollBegin ? 'show' : ''" >Les 24, 25, et 26 Juin 2022</div>
+          <!-- <div class="dates" :class="introEnded && !scrollBegin ? 'show' : ''" >Les 24, 25, et 26 Juin 2022</div> -->
         <!-- </transition> -->
-      </div>
+      <!-- </div> -->
       
-       <transition name="link" duration="10000">
+       <!-- <transition name="link" duration="10000">
           <a href="https://buy.stripe.com/7sIbKMe8a8Kw0GQ4gi" target='_blank' rel="noopener" ref="link" class="main-link" v-show="showLink">CLICK THAT LINK MOFO</a>
       </transition>
       <transition name="link" duration="10000">
         <div v-show="introEnded && !scrollBegin" class="scroll-cta">scroll that pineapple</div>
-      </transition>
+      </transition> -->
   </div>
 </template>
 
@@ -24,7 +24,7 @@
 import './home.less'
 import Bowser from 'bowser'
 import gsap from 'gsap'
-import {Texture, Plane, Mesh, Program, Vec2, TextureLoader, Geometry }  from 'ogl'
+import {Texture, Plane, Sphere, Mesh, Program, Vec2, TextureLoader, Geometry }  from 'ogl'
 import Emitter from 'event-emitter'
 import Data from '@/assets/data/data.json'
 import beam from '@/static/objects/beam.json'
@@ -84,17 +84,18 @@ export default {
       rotation: 0,
       rotationZ: 0,
       startRotation: 0,
-      originalPosition: -30,
+      originalPosition: 0,
       position: -30,
       maxScroll: 10000,
       showLink: false,
-      introEnded: false,
+      introEnded: true,
       val: 0,
       title:"<span>The</span></br><span class='title'>Furidays</span>"
     }
   },
   mounted() {
-      import('../../assets/js/Raf').then((el) => {
+    this.appear()
+    import('../../assets/js/Raf').then((el) => {
       this.Raf = el.default
       this.Raf.suscribe('webgl', this.update.bind(this))
     })
@@ -115,8 +116,7 @@ export default {
       }
   
     })
-    this.split()
-    // this.appear()
+    // this.split()
   },
   methods: {
     split() {
@@ -150,7 +150,7 @@ export default {
         cullFace: null,
         transparent: true
       })
-      const geometry = new Plane(this.Scene.gl)
+      const geometry = new Sphere(this.Scene.gl)
       this.null = new Mesh(this.Scene.gl, { geometry, program })
       this.null.position.set(0, 0, this.originalPosition)
       this.null.setParent(this.Scene.scene)
@@ -324,7 +324,8 @@ export default {
     return Math.max(min, Math.min(number, max));
   },
   appear() {
-    gsap.fromTo(this, {position: -30}, {position: 0, duration: 5,
+    console.log('UPDATE')
+    gsap.fromTo(this, {position: -10}, {position: -10, duration: 5,
     onUpdate: () => {
       this.originalPosition = this.position
     },
@@ -335,6 +336,7 @@ export default {
   update() {
     this.time++
     let tmp = this.scrollTarget - this.scroll
+    
     tmp *= 0.1
     this.scroll += tmp
     // console.log(this.scroll)
