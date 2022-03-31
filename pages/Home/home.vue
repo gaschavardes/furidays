@@ -1,6 +1,6 @@
 <template>
   <div class="tpl-home">
-    <Intro/>
+    <!-- <Intro/> -->
     <!-- <img :src="require(`../../static/images/${datas.projects[0].image}`)" alt=""> -->
       <!-- <div class="title-container">
         <transition name="names" duration="10000">
