@@ -19,7 +19,6 @@
       </transition> -->
   </div>
 </template>
-
 <script>
 import './home.less'
 import Bowser from 'bowser'
